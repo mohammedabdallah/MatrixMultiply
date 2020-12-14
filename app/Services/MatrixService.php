@@ -4,6 +4,12 @@ namespace App\Services;
 
 class MatrixService
 {
+
+    /**
+     * @param array $firstMatrix
+     * @param array $secondMatrix
+     * @return array
+     */
     public function multiplyTwoMatrix(array $firstMatrix, array $secondMatrix): array
     {
         $result = [];
@@ -14,7 +20,7 @@ class MatrixService
                 $result[$firstMatrixCounter][$secondMatrixCounter] = 0;
 
                 for ($resultMatrixCounter = 0; $resultMatrixCounter < count($firstMatrix[0]); $resultMatrixCounter++) {
-                    
+
                     $result[$firstMatrixCounter][$secondMatrixCounter] +=
                         (int)$firstMatrix[$firstMatrixCounter][$resultMatrixCounter]
                         *
