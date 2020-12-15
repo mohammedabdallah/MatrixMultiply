@@ -6,6 +6,9 @@ class MatrixService
 {
 
     /**
+     * This function simply iterate over first matrix ro and second matrix columns to multiply them and count them
+     * Time Complexity O(N^3)
+     * We can minimize complexity using Strassen Algorithm to be O(N^2.8074) but it only sufficient for squared metrics
      * @param array $firstMatrix
      * @param array $secondMatrix
      * @return array
