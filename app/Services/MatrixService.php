@@ -51,7 +51,7 @@ class MatrixService
      * @param int $number
      * @return string
      */
-    private function generateCharFromNumber(int $number): string
+    public function generateCharFromNumber(int $number): string
     {
         $letters = '';
         while ($number > 0) {

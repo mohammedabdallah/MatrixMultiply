@@ -7,7 +7,7 @@ use Illuminate\Contracts\Validation\Rule;
 class IsValidMetricsToMultiply implements Rule
 {
     /**
-     * Determine if the validation rule passes.
+     * Determine if the columns count in first matrix equal to second row matrix
      *
      * @param string $attribute
      * @param mixed $value
