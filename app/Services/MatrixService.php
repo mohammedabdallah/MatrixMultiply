@@ -25,7 +25,7 @@ class MatrixService
                 }
             }
         }
-        
+
         return $result;
     }
 

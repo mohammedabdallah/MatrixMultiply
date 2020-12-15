@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\MultiplyMatrixRequest;
 use App\Services\MatrixService;
-use Illuminate\Http\Request;
 
 class MatrixController extends Controller
 {
@@ -15,7 +15,7 @@ class MatrixController extends Controller
         $this->matrixService = $matrixService;
     }
 
-    public function multiply(Request $request)
+    public function multiply(MultiplyMatrixRequest $request)
     {
         $result = $this->matrixService-> multiplyTwoMatrix($request->get('first_matrix'),$request->get('second_matrix'));
         return $this->matrixService->transFormMatrixToExcelColumns($result);
