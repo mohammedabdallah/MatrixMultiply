@@ -14,5 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::group(['namespace' => 'Api'], function ($route) {
+    Route::post('/register', 'Auth\AuthController@register');
+    Route::post('/login', 'Auth\AuthController@login');
     Route::post('multiplyMatrix','MatrixController@multiply');
 });
