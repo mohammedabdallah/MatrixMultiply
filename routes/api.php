@@ -17,6 +17,11 @@ Route::group(
     function ($route) {
         Route::post('/register', 'Auth\AuthController@register');
         Route::post('/login', 'Auth\AuthController@login');
-        Route::post('multiplyMatrix', 'MatrixController@multiply');
+        Route::group(
+            ['middleware' => 'auth:api'],
+            function () {
+                Route::post('multiplyMatrix', 'MatrixController@multiply');
+            }
+        );
     }
 );
