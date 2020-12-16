@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,8 +12,11 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::group(['namespace' => 'Api'], function ($route) {
-    Route::post('/register', 'Auth\AuthController@register');
-    Route::post('/login', 'Auth\AuthController@login');
-    Route::post('multiplyMatrix','MatrixController@multiply');
-});
+Route::group(
+    ['namespace' => 'Api'],
+    function ($route) {
+        Route::post('/register', 'Auth\AuthController@register');
+        Route::post('/login', 'Auth\AuthController@login');
+        Route::post('multiplyMatrix', 'MatrixController@multiply');
+    }
+);
