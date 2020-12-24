@@ -7,6 +7,10 @@
 - [x] Reduce complexity 
 - [x] Ability to add any converter we need easily 
 
+### Validations
+* First array columns is equal to the second rows
+* All items are numeric values 
+
 **tests** 
 
 * it test that service return the right char against specific number according excel columns
