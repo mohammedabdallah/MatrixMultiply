@@ -17,10 +17,9 @@ class MatrixController extends Controller
 
     public function multiply(MultiplyMatrixRequest $request): array
     {
-        $result = $this->matrixService->multiplyTwoMatrix(
+        return $this->matrixService->multiplyTwoMatrix(
             $request->get('first_matrix'),
             $request->get('second_matrix')
         );
-        return $this->matrixService->transFormMatrixToExcelColumns($result);
     }
 }

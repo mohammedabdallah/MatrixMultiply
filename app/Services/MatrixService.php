@@ -19,37 +19,19 @@ class MatrixService
         for ($firstMatrixCounter = 0; $firstMatrixCounter < count($firstMatrix); $firstMatrixCounter++) {
             for ($secondMatrixCounter = 0; $secondMatrixCounter < count($secondMatrix[1]); $secondMatrixCounter++) {
                 $result[$firstMatrixCounter][$secondMatrixCounter] = 0;
-
+                $resultedNumber = 0;
                 for ($resultMatrixCounter = 0; $resultMatrixCounter < count($firstMatrix[0]); $resultMatrixCounter++) {
-                    $result[$firstMatrixCounter][$secondMatrixCounter] +=
+                    $resultedNumber +=
                         (int)$firstMatrix[$firstMatrixCounter][$resultMatrixCounter]
                         *
                         (int)$secondMatrix[$resultMatrixCounter][$secondMatrixCounter];
                 }
+                $result[$firstMatrixCounter][$secondMatrixCounter] = $this->generateCharFromNumber($resultedNumber);
             }
         }
 
         return $result;
     }
-
-    /**
-     * @param array $matrix
-     * @return array
-     */
-    public function transFormMatrixToExcelColumns(array $matrix): array
-    {
-        $result = [];
-        for ($rowCounter = 0; $rowCounter < count($matrix); $rowCounter++) {
-            for ($columnCounter = 0; $columnCounter < count($matrix[1]); $columnCounter++) {
-                $result[$rowCounter][$columnCounter] = $this->generateCharFromNumber(
-                    $matrix[$rowCounter][$columnCounter]
-                );
-            }
-        }
-
-        return $result;
-    }
-
     /**
      * @param int $number
      * @return string

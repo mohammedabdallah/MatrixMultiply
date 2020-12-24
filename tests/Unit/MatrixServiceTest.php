@@ -14,18 +14,6 @@ class MatrixServiceTest extends TestCase
         $this->matrixService = app()->make(MatrixService::class);
     }
 
-    /**
-     * A basic test to make sure that the function return the right char which against it in excel columns
-     *
-     * @return void
-     */
-    public function testItReturnRightCharInExcel()
-    {
-        $char = $this->matrixService->generateCharFromNumber(28);
-
-        $this->assertEquals('AB', $char);
-    }
-
     public function testItMultiplicityTwoMatricesCorrectly()
     {
         $firstMatrix = [
@@ -39,15 +27,15 @@ class MatrixServiceTest extends TestCase
             [7, 2, 5]
         ];
         $expectedResult = [
-            [26, 16, 28],
-            [56, 40, 64],
-            [86, 64, 100]
+            ['Z', 'P', 'AB'],
+            ['BD', 'AN', 'BL'],
+            ['CH', 'BL', 'CV']
         ];
 
         $result = $this->matrixService->multiplyTwoMatrix($firstMatrix, $secondMatrix);
-
         $this->assertEquals($expectedResult, $result);
     }
+
     /**
      * Test if it can handle a large matrix
      *
@@ -96,47 +84,7 @@ class MatrixServiceTest extends TestCase
         $alphabet = (new MatrixService())->generateCharFromNumber(0);
 
         //Currently returns an empty string, what can be done about it?
-        $this->assertEquals('',$alphabet);
-
+        $this->assertEquals('', $alphabet);
     }
 
-    /**
-     * Test validation exception throwing when cell value is not a number
-     *
-     * @return void
-     */
-    public function testValidationExceptionIsThrownWhenMatrixHasNonNumericValues()
-    {
-        $matrixWithStringValue = [
-            ['A', 2, 3],
-            [2, 3,],
-            [3, 4, 5]
-        ];
-
-        //Assert validation exception is thrown
-
-        $matrixWithDecimalValue = [
-            [1, 2, 3],
-            [2, 3, 4],
-            [3, 4, [1]]
-        ];
-
-        //Assert validation exception is thrown
-
-        $matrixWithDecimalValue = [
-            [1, 2, 3],
-            [2, 3, 4],
-            [3, 4, 5.5]
-        ];
-
-        //Assert validation exception is thrown
-
-        $matrixWithBooleanValue = [
-            [1, 2, 3],
-            [2, 3, 4],
-            [false, 4, 5]
-        ];
-
-        //Assert validation exception is thrown
-    }
 }
