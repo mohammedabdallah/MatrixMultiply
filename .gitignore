@@ -14,3 +14,5 @@ yarn-error.log
 .idea/workspace.xml
 .php_cs.cache
 .idea/inspectionProfiles/
+debug.log $ git rm -r --cached .idea/ git commit -m Start ignoring non needed files
+.idea/*
