@@ -18,12 +18,7 @@ class MatrixService
         $result = [];
         if($firstMatrix == $secondMatrix)
         {
-            foreach ($secondMatrix as $row => $columns) {
-                foreach ($columns as $row2 => $column2) {
-                    $retData[$row2][$row] = $column2;
-                }
-            }
-            $secondMatrix = $retData;
+            $secondMatrix = $this->transposeMatrix($secondMatrix);
             //or using this pretty one    $secondMatrix = array_map(null, ...$matrix)
         }
         for ($firstMatrixCounter = 0; $firstMatrixCounter < count($firstMatrix); $firstMatrixCounter++) {
@@ -63,5 +58,15 @@ class MatrixService
             $letters .= '-';
         }
         return strtoupper(strrev($letters));
+    }
+    public function transposeMatrix($matrix)
+    {
+        $result = [];
+        foreach ($matrix as $row => $columns) {
+            foreach ($columns as $row2 => $column2) {
+                $result[$row2][$row] = $column2;
+            }
+        }
+        return $result;
     }
 }
