@@ -18,8 +18,13 @@ class MatrixService
         $result = [];
         if($firstMatrix == $secondMatrix)
         {
-           $secondMatrix =
-                array_map(null, ...$secondMatrix);
+            foreach ($secondMatrix as $row => $columns) {
+                foreach ($columns as $row2 => $column2) {
+                    $retData[$row2][$row] = $column2;
+                }
+            }
+            $secondMatrix = $retData;
+            //or using this pretty one    $secondMatrix = array_map(null, ...$matrix)
         }
         for ($firstMatrixCounter = 0; $firstMatrixCounter < count($firstMatrix); $firstMatrixCounter++) {
             for ($secondMatrixCounter = 0; $secondMatrixCounter < count($secondMatrix[1]); $secondMatrixCounter++) {
