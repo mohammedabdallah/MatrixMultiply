@@ -2,6 +2,9 @@
 
 namespace App\Services;
 
+use App\Helpers\LoadClass;
+use Exception;
+
 class MatrixService
 {
 
@@ -13,11 +16,10 @@ class MatrixService
      * @param array $secondMatrix
      * @return array
      */
-    public function multiplyTwoMatrix(array $firstMatrix, array $secondMatrix): array
+    public function multiplyTwoMatrix(array $firstMatrix, array $secondMatrix, $convertType): array
     {
         $result = [];
-        if($firstMatrix == $secondMatrix)
-        {
+        if ($firstMatrix == $secondMatrix) {
             $secondMatrix = $this->transposeMatrix($secondMatrix);
             //or using this pretty one    $secondMatrix = array_map(null, ...$matrix)
         }
@@ -31,7 +33,7 @@ class MatrixService
                         *
                         (int)$secondMatrix[$resultMatrixCounter][$secondMatrixCounter];
                 }
-                $result[$firstMatrixCounter][$secondMatrixCounter] = $this->generateCharFromNumber($resultedNumber);
+                $result[$firstMatrixCounter][$secondMatrixCounter] = $this->generateCharFromNumber($resultedNumber, $convertType);
             }
         }
         return $result;
@@ -40,24 +42,15 @@ class MatrixService
      * @param int $number
      * @return string
      */
-    public function generateCharFromNumber(int $number): string
+    public function generateCharFromNumber(int $number, $convertType)
     {
-        $letters = '';
-        $positiveNumber = abs($number);
-        while ($positiveNumber > 0) {
-            if ($positiveNumber % 26 == 0) {
-                $code = 26;
-            } else {
-                $code = $positiveNumber % 26;
-            }
-
-            $letters .= chr($code + 64);
-            $positiveNumber = ($positiveNumber - $code) / 26;
+        $converter =  LoadClass::load($convertType);
+        //handle if convert type not supported in our systme
+        if (!class_exists($converter)) {
+            throw new Exception("Error Processing Request", 1);
         }
-        if ($number < 0) {
-            $letters .= '-';
-        }
-        return strtoupper(strrev($letters));
+        $instance  = new $converter();
+        return  $instance->convert($number);
     }
     public function transposeMatrix($matrix)
     {

@@ -19,7 +19,8 @@ class MatrixController extends Controller
     {
         return $this->matrixService->multiplyTwoMatrix(
             $request->get('first_matrix'),
-            $request->get('second_matrix')
+            $request->get('second_matrix'),
+            $request->get('convert_type')
         );
     }
 }

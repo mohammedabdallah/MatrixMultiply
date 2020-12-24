@@ -32,7 +32,7 @@ class MatrixServiceTest extends TestCase
             ['CH', 'BL', 'CV']
         ];
 
-        $result = $this->matrixService->multiplyTwoMatrix($firstMatrix, $secondMatrix);
+        $result = $this->matrixService->multiplyTwoMatrix($firstMatrix, $secondMatrix,'alpha');
         $this->assertEquals($expectedResult, $result);
     }
 
@@ -51,7 +51,7 @@ class MatrixServiceTest extends TestCase
             range(1, 1000),
             range(1, 1000)
         ];
-        $multiplicationResult = $this->matrixService->multiplyTwoMatrix($largeMatrix, $largeMatrix);
+        $multiplicationResult = $this->matrixService->multiplyTwoMatrix($largeMatrix, $largeMatrix,'alpha');
         //Check columns and rows count
         $this->assertCount(6, $multiplicationResult);
     }
@@ -63,13 +63,13 @@ class MatrixServiceTest extends TestCase
      */
     public function testNegativeIntegersFormatting()
     {
-        $alphabet = (new MatrixService())->generateCharFromNumber(-1);
+        $alphabet = (new MatrixService())->generateCharFromNumber(-1,'alpha');
         $this->assertEquals("-A", $alphabet);
 
-        $alphabet = (new MatrixService())->generateCharFromNumber(-4);
+        $alphabet = (new MatrixService())->generateCharFromNumber(-4,'alpha');
         $this->assertEquals("-D", $alphabet);
 
-        $alphabet = (new MatrixService())->generateCharFromNumber(-26);
+        $alphabet = (new MatrixService())->generateCharFromNumber(-26,'alpha');
         $this->assertEquals("-Z", $alphabet);
     }
 
@@ -80,7 +80,7 @@ class MatrixServiceTest extends TestCase
      */
     public function testZeroValue()
     {
-        $alphabet = (new MatrixService())->generateCharFromNumber(0);
+        $alphabet = (new MatrixService())->generateCharFromNumber(0,'alpha');
 
         //Currently returns an empty string, what can be done about it?
         $this->assertEquals('', $alphabet);
