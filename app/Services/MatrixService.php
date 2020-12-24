@@ -57,18 +57,20 @@ class MatrixService
     public function generateCharFromNumber(int $number): string
     {
         $letters = '';
-        while ($number > 0) {
-
-            if ($number % 26 == 0) {
+        $positiveNumber = abs($number);
+        while ($positiveNumber > 0) {
+            if ($positiveNumber % 26 == 0) {
                 $code = 26;
             } else {
-                $code = $number % 26;
+                $code = $positiveNumber % 26;
             }
 
             $letters .= chr($code + 64);
-            $number = ($number - $code) / 26;
+            $positiveNumber = ($positiveNumber - $code) / 26;
         }
-
+        if ($number < 0) {
+            $letters .= '-';
+        }
         return strtoupper(strrev($letters));
     }
 }
