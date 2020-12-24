@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Helpers\LoadClass;
 use Exception;
+use InvalidArgumentException;
 
 class MatrixService
 {
@@ -47,7 +48,7 @@ class MatrixService
         $converter =  LoadClass::load($convertType);
         //handle if convert type not supported in our systme
         if (!class_exists($converter)) {
-            throw new Exception("Error Processing Request", 1);
+            throw new InvalidArgumentException("Error Processing Request", 1);
         }
         $instance  = new $converter();
         return  $instance->convert($number);

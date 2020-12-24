@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use App\Services\MatrixService;
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 class MatrixServiceTest extends TestCase
@@ -86,4 +87,10 @@ class MatrixServiceTest extends TestCase
         $this->assertEquals('', $alphabet);
     }
 
+    public function testItThrowExceptionWhenUseUnsuportedCoverterType()
+    {
+        $this->expectException(InvalidArgumentException::class);
+
+        $this->matrixService->generateCharFromNumber(27,'alphaaa');
+    }
 }
