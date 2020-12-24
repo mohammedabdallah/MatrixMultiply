@@ -18,9 +18,26 @@ class IsValidMetricsToMultiply implements Rule
         if (count($value[1]) != count(request('second_matrix'))) {
             return false;
         }
+        if(!$this->isAllItemsNumericValues($value) || !$this->isAllItemsNumericValues(request('second_matrix')))
+        {
+            return false;
+        }
         return true;
     }
+    public function isAllItemsNumericValues($matrix)
+    {
+        foreach ($matrix as $row=>$columns ) {
 
+            foreach ( $columns as $key => $value ) {
+                if(!is_numeric($value))
+                {
+                    return false;
+                }
+            }
+
+        }
+        return true;
+    }
     /**
      * Get the validation error message.
      *
@@ -28,6 +45,6 @@ class IsValidMetricsToMultiply implements Rule
      */
     public function message()
     {
-        return 'the column count in the first matrix should be equal to the row count of the second matrix';
+        return 'the column count in the first matrix should be equal to the row count of the second matrix and all elements must be numeric values';
     }
 }
