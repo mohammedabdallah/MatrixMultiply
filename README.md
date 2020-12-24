@@ -4,11 +4,16 @@
 - [x] Create user
 - [x] Login
 - [x] Authnitecated users can multiply metrics 
+- [x] Reduce complexity 
+- [x] Ability to add any converter we need easily 
 
 **tests** 
 
 * it test that service return the right char against specific number according excel columns
 * it test it multiply two matrix correctly
+* it can handle large matrix
+* it will throw exception if there's a non suported type called
+
 
 
 **postman collection**
