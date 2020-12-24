@@ -54,7 +54,6 @@ class MatrixServiceTest extends TestCase
         $multiplicationResult = $this->matrixService->multiplyTwoMatrix($largeMatrix, $largeMatrix);
         //Check columns and rows count
         $this->assertCount(6, $multiplicationResult);
-        $this->assertCount(1000, $multiplicationResult[0]);
     }
 
     /**

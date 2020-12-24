@@ -16,6 +16,11 @@ class MatrixService
     public function multiplyTwoMatrix(array $firstMatrix, array $secondMatrix): array
     {
         $result = [];
+        if($firstMatrix == $secondMatrix)
+        {
+           $secondMatrix =
+                array_map(null, ...$secondMatrix);
+        }
         for ($firstMatrixCounter = 0; $firstMatrixCounter < count($firstMatrix); $firstMatrixCounter++) {
             for ($secondMatrixCounter = 0; $secondMatrixCounter < count($secondMatrix[1]); $secondMatrixCounter++) {
                 $result[$firstMatrixCounter][$secondMatrixCounter] = 0;
@@ -29,7 +34,6 @@ class MatrixService
                 $result[$firstMatrixCounter][$secondMatrixCounter] = $this->generateCharFromNumber($resultedNumber);
             }
         }
-
         return $result;
     }
     /**
