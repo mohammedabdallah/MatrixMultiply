@@ -43,7 +43,7 @@ class MatrixService
      * @param int $number
      * @return string
      */
-    public function generateCharFromNumber(int $number, $convertType)
+    public function generateCharFromNumber(int $number, string $convertType): string
     {
         $converter =  LoadClass::load($convertType);
         //handle if convert type not supported in our systme
