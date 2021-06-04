@@ -5,7 +5,7 @@
 - [x] Login
 - [x] Authnitecated users can multiply metrics 
 - [x] Reduce complexity 
-- [x] Ability to add any converter we need easily 
+- [] Ability to add any converter we need easily 
 
 ### Validations
 * First array columns is equal to the second rows
